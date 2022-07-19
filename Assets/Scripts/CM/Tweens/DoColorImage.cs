@@ -30,6 +30,7 @@ namespace CM.Tweens
         }
 
         private void OnDestroy() => Dispose();
+        private void OnDisable()=> Dispose();
         private void Dispose() => image.DOKill();
     }
 }

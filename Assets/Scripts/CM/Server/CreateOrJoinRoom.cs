@@ -1,11 +1,12 @@
 using System;
+using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace CM.Server
 {
-    public class CreateOrJoinRoom : MonoBehaviour
+    public class CreateOrJoinRoom : MonoBehaviourPunCallbacks
     {
         [SerializeField] private Dropdown maxPlayersDropdown;
         [SerializeField] private InputField createRoomNameInputField;
@@ -20,18 +21,27 @@ namespace CM.Server
             joinRoomButton.onClick.AddListener(JoinRoom);
         }
 
-        private void JoinRoom()
-        {
-            
-        }
-
         private void CreateRoom()
         {
+            var roomOptions = new RoomOptions();
+            var roomPlayerCount = (byte)((byte)maxPlayersDropdown.value + 2);
+            
+            
+            roomOptions.MaxPlayers = roomPlayerCount;
+            
+            PhotonNetwork.CreateRoom(createRoomNameInputField.text, roomOptions);
         }
-        
-        
+        private void JoinRoom()
+        {
+            PhotonNetwork.JoinRoom(joinRoomNameInputField.text);
+        }
+
+        public override void OnJoinedRoom()
+        {
+            PhotonNetwork.LoadLevel("Game");
+        }
+
         private void OnDestroy() => Dispose();
-        private void OnDisable()=> Dispose();
 
         private void Dispose()
         {

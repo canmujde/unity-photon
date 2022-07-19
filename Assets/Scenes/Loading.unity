@@ -370,7 +370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f8165a4240fd4d4da0c2f391d3419f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadSceneName: Menu
+  loadSceneName: Room
   fadeInImage: {fileID: 267331605}
   loadingText: {fileID: 98490729}
 --- !u!1 &267331603

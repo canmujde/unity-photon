@@ -1,12 +1,16 @@
+using DG.Tweening;
 using Photon.Pun;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace CM.Server
 {
     public class ConnectToServer : MonoBehaviourPunCallbacks
     {
         [SerializeField] private string loadSceneName;
+        [SerializeField] private Image fadeInImage;
+        [SerializeField] private Text loadingText;
         private void Start()
         {
             Connect();
@@ -19,7 +23,12 @@ namespace CM.Server
 
         public override void OnConnectedToMaster()
         {
-            SceneManager.LoadScene(loadSceneName);
+            loadingText.text = "Connected";
+            fadeInImage.DOColor(Color.black, 0.3f).SetDelay(2f).OnComplete((() =>
+            {
+                SceneManager.LoadScene(loadSceneName);
+            }));
+            
         }
     }
 }

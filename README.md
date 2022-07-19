@@ -1,1 +1,1 @@
-# This is a Unity gitignore template
+# This is a Unity-Photon Project

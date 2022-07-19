@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -30,6 +31,9 @@ namespace CM.Tweens
         }
         
         private void OnDestroy() => Dispose();
+
+        private void OnDisable()=> Dispose();
+
         private void Dispose() => text.DOKill();
     }
 }

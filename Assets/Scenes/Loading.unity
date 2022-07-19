@@ -322,10 +322,10 @@ MonoBehaviour:
   text: {fileID: 98490729}
   from: {r: 0, g: 0, b: 0, a: 0.19215687}
   to: {r: 0, g: 0, b: 0, a: 1}
-  duration: 0.6
+  duration: 0.4
   loop: 1
   onEnable: 1
-  ease: 28
+  ease: 1
 --- !u!1 &224785344
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         _view = GetComponent<PhotonView>();
+        
+        if (_view.IsMine) CameraFollower.Instance.SetTarget(transform);
     }
 
     private void Update()
@@ -31,6 +33,6 @@ public class PlayerController : MonoBehaviour
 
         transform.position += new Vector3(movement.x, 0, movement.y);
 
-        animator.SetBool(IsRunningAnimatorKey, movement == Vector2.zero);
+        animator.SetBool(IsRunningAnimatorKey, movement != Vector2.zero);
     }
 }

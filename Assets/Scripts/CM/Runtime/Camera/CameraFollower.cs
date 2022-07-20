@@ -23,7 +23,7 @@ public class CameraFollower : MonoBehaviour
         transform.position = target.transform.position + offset;
 
     }
-    private void Update () 
+    private void FixedUpdate () 
     {
         if (!target) return;
 

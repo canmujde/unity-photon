@@ -826,7 +826,7 @@ GameObject:
   - component: {fileID: 7549873908784397381}
   - component: {fileID: 5204870143381251437}
   - component: {fileID: -7154206240096215818}
-  - component: {fileID: -5253754788513893109}
+  - component: {fileID: -926116543006605811}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -886,7 +886,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: -5253754788513893109}
+  - {fileID: -926116543006605811}
   - {fileID: 4173449268968615952}
   sceneViewId: 0
   InstantiationId: 0
@@ -903,9 +903,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 228c273738efa4e09adacc28825c63b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
   animator: {fileID: 727912237046089668}
---- !u!114 &-5253754788513893109
+  _acceleration: 80
+  _maxVelocity: 10
+  _rotationSpeed: 450
+--- !u!114 &-926116543006605811
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -914,30 +916,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 7549873908784397379}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8efc6b1d64977384eb3405357896c656, type: 3}
+  m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PositionModel:
-    SynchronizeEnabled: 1
-    TeleportEnabled: 1
-    TeleportIfDistanceGreaterThan: 3
-    InterpolateOption: 2
-    InterpolateMoveTowardsSpeed: 1
-    InterpolateLerpSpeed: 1
-    ExtrapolateOption: 0
-    ExtrapolateSpeed: 1
-    ExtrapolateIncludingRoundTripTime: 1
-    ExtrapolateNumberOfStoredPositions: 1
-  m_RotationModel:
-    SynchronizeEnabled: 1
-    InterpolateOption: 1
-    InterpolateRotateTowardsSpeed: 180
-    InterpolateLerpSpeed: 5
-  m_ScaleModel:
-    SynchronizeEnabled: 0
-    InterpolateOption: 0
-    InterpolateMoveTowardsSpeed: 1
-    InterpolateLerpSpeed: 0
+  m_SynchronizeVelocity: 1
+  m_SynchronizeAngularVelocity: 1
+  m_TeleportEnabled: 0
+  m_TeleportIfDistanceGreaterThan: 3
 --- !u!1 &7549873908858903486
 GameObject:
   m_ObjectHideFlags: 0

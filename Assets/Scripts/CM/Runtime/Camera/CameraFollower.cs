@@ -8,6 +8,7 @@ public class CameraFollower : MonoBehaviour
 
     [SerializeField] private Transform target;
     [SerializeField] private Vector3 offset;
+    [SerializeField] private float smoothFactor;
 
     public static CameraFollower Instance;
 
@@ -19,10 +20,12 @@ public class CameraFollower : MonoBehaviour
     public void SetTarget(Transform t)
     {
         target = t;
+        transform.position = target.transform.position + offset;
+
     }
     private void Update () 
     {
-        if (target is null) return;
+        if (!target) return;
 
         Move();
         
@@ -30,6 +33,7 @@ public class CameraFollower : MonoBehaviour
 
     private void Move()
     {
-        transform.position = target.transform.position + offset;
+        var lerp = Vector3.Lerp(transform.position, target.transform.position + offset, Time.deltaTime * smoothFactor);
+        transform.position = lerp;
     }
 }

@@ -9,11 +9,10 @@ public class Enemy : MonoBehaviour
     [SerializeField] private PlayerController[] players;
     [SerializeField] private Transform nearestPlayer;
     [SerializeField] private float speed;
-    [SerializeField] private EnemyTrigger enemyTrigger;
-    
+
+    public bool Destroyed = false;
     private void Start()
     {
-        enemyTrigger.Initialize(this);
         players = FindObjectsOfType<PlayerController>();
     }
 
@@ -42,6 +41,7 @@ public class Enemy : MonoBehaviour
         Vector3 currentPosition = transform.position;
         foreach (PlayerController potentialTarget in players)
         {
+            if (!potentialTarget) continue;
             Vector3 directionToTarget = potentialTarget.transform.position - currentPosition;
             float dSqrToTarget = directionToTarget.sqrMagnitude;
             if (dSqrToTarget < closestDistanceSqr)

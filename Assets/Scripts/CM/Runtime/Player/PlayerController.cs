@@ -16,8 +16,10 @@ public class PlayerController : MonoBehaviour
     private Vector3 _input;
     private Rigidbody _rb;
 
-    private PhotonView _view;
+    public PhotonView View { get; private set; }
     private static readonly int IsRunningAnimatorKey = Animator.StringToHash("isRunning");
+    
+    
     
     private void Awake() {
         _rb = GetComponent<Rigidbody>();
@@ -25,19 +27,19 @@ public class PlayerController : MonoBehaviour
     }
     private void Start()
     {
-        _view = GetComponent<PhotonView>();
+        View = GetComponent<PhotonView>();
         
-        if (_view.IsMine) CameraFollower.Instance.SetTarget(transform);
+        if (View.IsMine) CameraFollower.Instance.SetTarget(transform);
     }
     private void Update() {
         
-        if (!_view.IsMine) return;
+        if (!View.IsMine) return;
         _input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
         animator.SetBool(IsRunningAnimatorKey, _input != Vector3.zero);
     }
 
     private void FixedUpdate() {
-        if (!_view.IsMine) return;
+        if (!View.IsMine) return;
         HandleMovement();
         HandleRotation();
     }
@@ -67,7 +69,7 @@ public class PlayerController : MonoBehaviour
             var lookPos = hitPoint - transform.position;
             lookPos.y = 0;
             var rotation = Quaternion.LookRotation(lookPos);
-            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 5);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * _rotationSpeed);
             
             
             //

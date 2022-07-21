@@ -9,10 +9,11 @@ public class Enemy : MonoBehaviour
     [SerializeField] private PlayerController[] players;
     [SerializeField] private Transform nearestPlayer;
     [SerializeField] private float speed;
-
-
+    [SerializeField] private EnemyTrigger enemyTrigger;
+    
     private void Start()
     {
+        enemyTrigger.Initialize(this);
         players = FindObjectsOfType<PlayerController>();
     }
 

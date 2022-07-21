@@ -20,7 +20,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Update()
     {
-        if (!PhotonNetwork.IsMasterClient || PhotonNetwork.CurrentRoom.PlayerCount < 2) return;
+        if (!PhotonNetwork.IsMasterClient ) return;
 
 
         if (_duration <= 0)

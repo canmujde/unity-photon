@@ -269,6 +269,7 @@ MonoBehaviour:
   players: []
   nearestPlayer: {fileID: 0}
   speed: 1
+  Destroyed: 0
 --- !u!54 &5778839439385151813
 Rigidbody:
   m_ObjectHideFlags: 0
